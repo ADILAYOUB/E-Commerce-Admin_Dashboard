@@ -13,7 +13,6 @@ class Dashboard extends StatelessWidget {
   final DashboardController controller = Get.find();
   final yourScrollController = ScrollController();
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,31 +23,28 @@ class Dashboard extends StatelessWidget {
             return Scrollbar(
               thickness: 10,
               controller: yourScrollController,
-
               thumbVisibility: true,
               child: SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
-
-                child: Row(
-                  children: [
-                    Obx(
-                          () => AnimatedContainer(
-                        width: controller.sidebarOpen.value ? 210 : 70,
-                        color: Color(0xffd31f3f),
-                        duration: Duration(milliseconds: 300),
-                        child: _buildSideBar(),
-                      ),
+                child: Row(children: [
+                  Obx(
+                    () => AnimatedContainer(
+                      width: controller.sidebarOpen.value ? 210 : 70,
+                      color: Color(0xffd31f3f),
+                      duration: Duration(milliseconds: 300),
+                      child: _buildSideBar(),
                     ),
-                    Container(
-                      width: 1200,
-                      color: Colors.white,
-                      child: Column(
-                        children: [
-                          _buildHeader(),
-                          Expanded(child: _buildContext()),
-                        ],
-                      ),
+                  ),
+                  Container(
+                    width: 1200,
+                    color: Colors.white,
+                    child: Column(
+                      children: [
+                        _buildHeader(),
+                        Expanded(child: _buildContext()),
+                      ],
                     ),
+                  ),
                 ]),
               ),
             );
@@ -121,7 +117,9 @@ class Dashboard extends StatelessWidget {
                         size: 21,
                         color: isSelected ? Color(0xffb72c1c) : Colors.white,
                       ),
-                      SizedBox(width: 5,),
+                      SizedBox(
+                        width: 5,
+                      ),
                       if (controller.sidebarOpen.value)
                         Flexible(
                           child: Text(
@@ -129,10 +127,9 @@ class Dashboard extends StatelessWidget {
                             style: TextStyle(
                               color:
                                   isSelected ? Color(0xffb72c1c) : Colors.white,
-                              fontWeight:
-                                  isSelected
-                                      ? FontWeight.bold
-                                      : FontWeight.normal,
+                              fontWeight: isSelected
+                                  ? FontWeight.bold
+                                  : FontWeight.normal,
                             ),
                             overflow: TextOverflow.ellipsis,
                           ),
@@ -160,7 +157,7 @@ class Dashboard extends StatelessWidget {
           ),
           SizedBox(width: 10),
           Text(
-            "Welcome Back, dear programmer!",
+            "Welcome Back, Adil Ayoub",
             style: TextStyle(fontSize: 19, fontWeight: FontWeight.bold),
           ),
           Spacer(),
